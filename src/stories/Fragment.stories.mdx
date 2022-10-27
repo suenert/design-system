@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Fragment from "./Fragment.vue";
+
+<Meta title="Example/Fragment" />
+
+# Fragment
+
+This concept is based on react [fragments](https://reactjs.org/docs/fragments.html).
+
+The abstract tells us what this pattern tries to achieve:
+
+> A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
+
+Fragments don't exist natively in vue, so we need this component to mimic their behaviour.
+
+<Canvas>
+  <Story
+    name="Compnent"
+    render={(args) => ({
+      components: { Fragment },
+      setup() {
+        return { args };
+      },
+      template: ` <Fragment> <p>hi 1</p> <p>hi 2</p> <p>hi 3</p> </Fragment> `,
+    })}
+  />
+</Canvas>
