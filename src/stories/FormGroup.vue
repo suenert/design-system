@@ -11,11 +11,18 @@
     <slot />
   </div>
 </template>
-<script setup>
+<script>
 import Heading from "./Heading.vue";
 import Text from "./Text.vue";
-defineProps({
-  title: String,
-  description: String,
-});
+
+export default {
+  components: {
+    Heading,
+    Text,
+  },
+  props: {
+    title: String,
+    description: String,
+  },
+};
 </script>
