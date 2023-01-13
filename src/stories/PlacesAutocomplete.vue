@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import throttle from "lodash/throttle";
+import throttle from "lodash-es/throttle";
 import {
   Combobox,
   ComboboxButton,
