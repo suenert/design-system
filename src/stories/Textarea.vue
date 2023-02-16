@@ -1,7 +1,10 @@
 <script setup>
 defineProps({
   label: String,
+  modelValue: String,
 });
+
+defineEmits(["update:modelValue"]);
 </script>
 
 <template>
@@ -17,6 +20,8 @@ defineProps({
         rows="4"
         name="comment"
         id="comment"
+        v-model="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
         class="
           block
           w-full
