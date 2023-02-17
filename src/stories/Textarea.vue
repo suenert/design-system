@@ -20,7 +20,7 @@ defineEmits(["update:modelValue"]);
         rows="4"
         name="comment"
         id="comment"
-        v-model="modelValue"
+        :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         class="
           block
