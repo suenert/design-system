@@ -6,16 +6,16 @@ import throttle from "lodash/throttle";
 import Input from "./Input.vue";
 
 const props = defineProps({
-  accessToken: {
-    type: String,
-    required: true,
-  },
-  label: String,
-  description: String,
-  placeholder: String,
-  error: String,
-  id: String,
-  classNames: String,
+    getSuggestions: {
+        type: Function,
+        required: true,
+    },
+    label: String,
+    description: String,
+    placeholder: String,
+    error: String,
+    id: String,
+    classNames: String,
 });
 
 const emit = defineEmits(["selected"]);
@@ -23,24 +23,20 @@ const emit = defineEmits(["selected"]);
 const focus = ref(false);
 
 const showSuggestions = computed(() => {
-  return focus.value && autoCompleteResults.value.length > 0;
+    return focus.value && autoCompleteResults.value.length > 0;
 });
 
 const search = ref("");
 const autoCompleteResults = ref([]);
 
 const getSuggestions = throttle(async function (search) {
-  const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${props.accessToken}&autocomplete=true&country=de&language=de`;
-  const promise = await fetch(endpoint);
-  const data = await promise.json();
-
-  autoCompleteResults.value = data.features;
+    autoCompleteResults.value = await props.getSuggestions(search);
 }, 1000);
 
 function select(place) {
-  search.value = place.place_name;
+    search.value = place.place_name;
 
-  emit("selected", place);
+    emit("selected", place);
 }
 </script>
 

@@ -5,13 +5,79 @@ export default {
   component: LocationSearch,
   args: {
     placeholder: "Wiesbaden Hbf",
-    accessToken: import.meta.env.VITE_MAPBOX_API_KEY,
-    label: 'Ortssuche',
-    description: '',
-    error: '',
-    id: 'location_search',
-    classNames: '',
-  }
+    label: "Ortssuche",
+    description: "",
+    error: "",
+    id: "location_search",
+    classNames: "",
+    getSuggestions: async function (search) {
+      let mockResponse = {
+        features: [
+          {
+            id: "address.3771029363421080",
+            type: "Feature",
+            place_type: ["address"],
+            relevance: 1,
+            properties: {
+              accuracy: "street",
+            },
+            text_de: "Zwerchgraben",
+            place_name_de: "Zwerchgraben, 97074 Würzburg, Deutschland",
+            text: "Zwerchgraben",
+            place_name: "Zwerchgraben, 97074 Würzburg, Deutschland",
+            center: [9.9538231, 49.7872133],
+            geometry: {
+              type: "Point",
+              coordinates: [9.9538231, 49.7872133],
+            },
+            context: [
+              {
+                id: "postcode.64187962",
+                text_de: "97074",
+                text: "97074",
+              },
+              {
+                id: "locality.88541754",
+                wikidata: "Q1451792",
+                text_de: "Frauenland",
+                language_de: "de",
+                text: "Frauenland",
+                language: "de",
+              },
+              {
+                id: "place.88672314",
+                wikidata: "Q2999",
+                text_de: "Würzburg",
+                language_de: "de",
+                text: "Würzburg",
+                language: "de",
+              },
+              {
+                id: "region.123962",
+                short_code: "DE-BY",
+                wikidata: "Q980",
+                text_de: "Bayern",
+                language_de: "de",
+                text: "Bayern",
+                language: "de",
+              },
+              {
+                id: "country.8762",
+                short_code: "de",
+                wikidata: "Q183",
+                text_de: "Deutschland",
+                language_de: "de",
+                text: "Deutschland",
+                language: "de",
+              },
+            ],
+          },
+        ],
+      };
+
+      return mockResponse.features;
+    },
+  },
 };
 
 /*
