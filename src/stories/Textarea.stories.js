@@ -18,10 +18,12 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<Textarea v-model="args.modelValue" :label="args.label" />',
+  template:
+    '<Textarea v-model="args.modelValue" :label="args.label" :error="args.error" />',
 });
 
 export const Component = Template.bind({});
 Component.args = {
   label: "Label",
+  error: "error message",
 };
