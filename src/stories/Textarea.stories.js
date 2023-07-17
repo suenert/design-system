@@ -29,14 +29,20 @@ Component.args = {
 };
 
 export const RootClasses = (args) => ({
-    components: { Textarea },
-    setup() {
-        return { args };
-      },
-    template:
-    '<Textarea v-model="args.modelValue" :label="args.label" :rows="args.rows" class="text-green-500" rootClasses="w-1/2" />'
-})
+  components: { Textarea },
+  setup() {
+    return { args };
+  },
+  template: `
+    <Textarea v-model="args.modelValue" 
+        :label="args.label" 
+        :rows="args.rows" 
+        class="text-green-500" 
+        rootClasses="w-1/2" 
+    />
+    `,
+});
 RootClasses.args = {
-    label: "Label",
-    rows: "5",
-  };
+  label: "Label",
+  rows: "5",
+};
