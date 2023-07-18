@@ -25,7 +25,7 @@ const props = defineProps({
 defineEmits(["update:modelValue"]);
 
 const classes = computed(() => ({
-  "!border-red-300 !text-red-900 !placeholder-red-300 !focus:ring-red-500 !focus:border-red-50":
+  "!border-red-300 !text-red-900 !placeholder-red-300 !focus:ring-red-500 !focus:border-red-500":
     props.error,
   "border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500":
     !props.error,
