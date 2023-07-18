@@ -20,20 +20,10 @@
         :class="classes"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
-        aria-invalid="true"
-        aria-describedby="email-error"
       />
       <div
         v-if="error"
-        class="
-          absolute
-          inset-y-0
-          right-0
-          pr-3
-          flex
-          items-center
-          pointer-events-none
-        "
+        class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
       >
         <ExclamationCircleIcon class="h-5 w-5 text-red-500" />
       </div>
@@ -57,7 +47,7 @@ export default {
   },
 
   props: {
-    rootClasses: String,
+    rootClasses: String || Array || Object,
     modelValue: {
       type: [String, Number],
       default: "",
