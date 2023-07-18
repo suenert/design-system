@@ -1,3 +1,9 @@
+<script>
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <script setup>
 import { computed } from "vue";
 import { useUniqueId } from "./useUniqueId.js";
@@ -7,6 +13,7 @@ const props = defineProps({
   label: String,
   error: String,
   modelValue: String,
+  rootClasses: String || Array || Object,
   id: {
     type: String,
     default() {
@@ -18,7 +25,7 @@ const props = defineProps({
 defineEmits(["update:modelValue"]);
 
 const classes = computed(() => ({
-  "border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500":
+  "!border-red-300 !text-red-900 !placeholder-red-300 !focus:ring-red-500 !focus:border-red-500":
     props.error,
   "border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500":
     !props.error,
@@ -26,16 +33,18 @@ const classes = computed(() => ({
 </script>
 
 <template>
-  <div>
+  <div :class="rootClasses">
     <label
       v-if="label"
       :for="id"
       class="block text-sm font-medium text-gray-700"
-      >{{ label }}</label
     >
+      {{ label }}
+    </label>
     <div :class="{ 'mt-1': label }">
       <textarea
-        rows="4"
+        v-bind="$attrs"
+        :rows="$attrs.rows || 4"
         :id="id"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
