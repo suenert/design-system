@@ -13,7 +13,7 @@ const props = defineProps({
   label: String,
   error: String,
   modelValue: String,
-  rootClasses: String,
+  rootClasses: String || Array || Object,
   id: {
     type: String,
     default() {
