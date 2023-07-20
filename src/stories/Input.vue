@@ -47,7 +47,7 @@ export default {
   },
 
   props: {
-    rootClasses: [Array, Object, String],
+    rootClasses: String,
     modelValue: {
       type: [String, Number],
       default: "",
