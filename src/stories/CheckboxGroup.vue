@@ -32,7 +32,7 @@
             </slot>
           </label>
           <p
-            v-if="$slots.description"
+            v-if="option.description"
             :id="`${option.value}-description`"
             class="text-gray-500"
           >

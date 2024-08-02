@@ -25,7 +25,7 @@ const Template = (args) => ({
             group-label="By Email"
             :error="args.error"
         />
-        <pre>v-model:{{ checked }}</pre>
+        <pre class="mt-8">v-model:{{ checked }}</pre>
     `,
 });
 
@@ -42,7 +42,6 @@ Component.args = {
     {
       value: "two",
       label: "Second Option",
-      description: "second description",
     },
     {
       value: "three",

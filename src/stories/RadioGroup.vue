@@ -22,12 +22,23 @@
           v-model="model"
           class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
         />
-        <label
-          :for="`${id}-${index}`"
-          class="ml-3 block text-sm font-medium text-gray-700"
-        >
-          {{ option.label }}
-        </label>
+
+        <div class="ml-3 text-sm block">
+          <label :for="`${id}-${index}`" class="font-medium text-gray-700">
+            <slot name="label" :label="option.label">
+              {{ option.label }}
+            </slot>
+          </label>
+          <p
+            v-if="option.description"
+            :id="`${option.value}-description`"
+            class="text-gray-500"
+          >
+            <slot name="description" :description="option.description">
+              {{ option.description }}
+            </slot>
+          </p>
+        </div>
       </div>
     </div>
     <ValidationError v-if="error" :error="error" class="mt-2" />
