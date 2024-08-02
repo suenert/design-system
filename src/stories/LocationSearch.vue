@@ -46,7 +46,7 @@ function select(place) {
       <Input
         type="text"
         v-model="search"
-        @input="getSuggestions(search)"
+        @keyup="getSuggestions(search)"
         :label="label"
         :description="description"
         :placeholder="placeholder"
